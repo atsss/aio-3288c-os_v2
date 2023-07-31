@@ -1,0 +1,11 @@
+# Ignore output directory
+build/cache/
+build/downloads/
+build/sstate-cache/
+build/tmp/
+
+# Some log files from scripts
+*.log
+
+# swp files
+*.swp
