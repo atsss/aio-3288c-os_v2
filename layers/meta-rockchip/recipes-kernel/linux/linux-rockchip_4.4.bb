@@ -6,13 +6,9 @@ require linux-rockchip.inc
 
 inherit local-git
 
-SRCREV = "${@bb.utils.contains('KERNEL_RELEASE', 'NULL', \
-		   '${FIREFLY_SDK_VERSION}', \
-		   '${KERNEL_RELEASE}', \
-		   d)}"
-
+SRCREV = "7b3da1ac1854bd937986203b6edc58e16944bc29"
 SRC_URI = " \
-	git://gitlab.com/firefly-linux/kernel.git;protocol=https;nobranch=1;branch=${FIREFLY_SDK_BRANCH}; \
+	git://github.com/JeffyCN/mirrors.git;protocol=https;nobranch=1;branch=kernel-4.4; \
 	file://${THISDIR}/files/cgroups.cfg \
 "
 
