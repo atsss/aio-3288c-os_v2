@@ -29,10 +29,12 @@ SRCREV_uboot = "${@bb.utils.contains('UBOOT_RELEASE', 'NULL', \
 		   '${UBOOT_RELEASE}', \
 		   d)}"
 
-SRC_URI = " \
-	git://gitlab.com/firefly-linux/u-boot.git;protocol=https;branch=${FIREFLY_SDK_BRANCH};name=uboot; \
-	git://gitlab.com/firefly-linux/rkbin.git;protocol=https;branch=${FIREFLY_SDK_BRANCH};name=rkbin;destsuffix=rkbin; \
-"
+SRC_URI = "git://gitlab.com/firefly-linux/u-boot.git;protocol=https;branch=${FIREFLY_SDK_BRANCH};name=uboot; \
+           git://gitlab.com/firefly-linux/rkbin.git;protocol=https;branch=${FIREFLY_SDK_BRANCH};name=rkbin;destsuffix=rkbin; \
+           file://0001-Remove-warning-error.patch \
+           file://0002-Remove-duplicated-efi-link.patch \
+           file://0003-Add-uboot-rules.patch \
+           "
 
 SRCREV_FORMAT = "default_rkbin"
 

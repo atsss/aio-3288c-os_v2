@@ -1,0 +1,27 @@
+From bfb4fdabcc267ec3d76abc64a850e6c791b2da9e Mon Sep 17 00:00:00 2001
+From: atsss <atsushi0623itoh@gmail.com>
+Date: Wed, 2 Aug 2023 19:47:12 +0100
+Subject: [PATCH] Add uboot rules
+
+---
+ Makefile | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 7f6513d8fb..1288f19290 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1700,6 +1700,13 @@ endif
+ 	$(build)=$(build-dir) $(@:.ko=.o)
+ 	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.modpost
+ 
++quiet_cmd_genenv = GENENV $@
++cmd_genenv = $(OBJCOPY) --dump-section .rodata.default_environment=$@ env/common.o; \
++	sed --in-place -e 's/\x00/\x0A/g' $@
++
++u-boot-initial-env: u-boot.bin
++	$(call if_changed,genenv)
++
+ # FIXME Should go into a make.lib or something
+ # ===========================================================================
+ 

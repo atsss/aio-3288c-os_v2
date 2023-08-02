@@ -1,0 +1,22 @@
+From 8a3e622d5fe0f0a2a9abd194bc91556d9a20dc9c Mon Sep 17 00:00:00 2001
+From: atsss <atsushi0623itoh@gmail.com>
+Date: Wed, 2 Aug 2023 19:46:50 +0100
+Subject: [PATCH] Remove duplicated efi link
+
+---
+ scripts/Makefile.lib | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/scripts/Makefile.lib b/scripts/Makefile.lib
+index a384b41898..eaf86593a3 100644
+--- a/scripts/Makefile.lib
++++ b/scripts/Makefile.lib
+@@ -392,8 +392,6 @@ cmd_efi_ld = $(LD) -nostdlib -znocombreloc -T $(EFI_LDS_PATH) -shared \
+ 
+ EFI_LDS_PATH = $(srctree)/arch/$(ARCH)/lib/$(EFI_LDS)
+ 
+-$(obj)/helloworld.so: $(EFI_LDS_PATH)
+-
+ $(obj)/helloworld.so: $(obj)/helloworld.o arch/$(ARCH)/lib/$(EFI_CRT0) \
+ 		arch/$(ARCH)/lib/$(EFI_RELOC)
+ 	$(call cmd,efi_ld)
