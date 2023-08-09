@@ -1,4 +1,6 @@
-# Base this image on core-image-minimal
-include recipes-core/images/core-image-minimal.bb
+LICENSE = "GPLv2"
+
+# Base this image on core-image-sato
+include recipes-core/images/core-image-sato.bb
 
 IMAGE_INSTALL:append = " packagegroup-rockchip"
